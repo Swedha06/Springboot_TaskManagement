@@ -10,23 +10,23 @@ import jakarta.transaction.Transactional;
 
 public interface repository extends JpaRepository<Maintask,Integer>{
 
-	@Query(value="SELECT * FROM Maintask s where s.taskId=?1",nativeQuery=true)
+	@Query(value="SELECT * FROM maintask s where s.taskId=?1",nativeQuery=true)
 	List<Maintask> findById(int id);
 	
 	
-	@Query(value="SELECT * FROM Maintask s where s.taskHolderame=?1",nativeQuery=true)
+	@Query(value="SELECT * FROM maintask s where s.taskHolderName=?1",nativeQuery=true)
 	List<Maintask> findByName(String taskHolderName);
 	
 	
 	@Modifying
 	@Transactional
-	@Query(value="Update Maintask s set s.taskId=?1 , s.taskHolderName=?2 , s.taskDate=?3 , s.taskName=?4 , s.taskStatus=?5 where s.taskId=?6", nativeQuery=true)
-	void update(int taskId,String taskHolderName, String season, String episode, String rating,int id);
+	@Query(value="Update maintask s set s.taskId=?1 , s.taskHolderName=?2 , s.taskDate=?3 , s.taskName=?4 , s.taskStatus=?5 where s.taskId=?6", nativeQuery=true)
+	void update(int taskId,String taskHolderName, String taskDate, String taskName, String taskStatus,int id);
 	
 	
 	@Modifying
 	@Transactional
-	@Query(value="DELETE FROM webseries where taskId=?1", nativeQuery=true)
+	@Query(value="DELETE FROM maintask where taskId=?1", nativeQuery=true)
 	void deleteAllByIdInBatch(int id);
 }
 
