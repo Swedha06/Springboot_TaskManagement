@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class alloperations {
 @Autowired repository ob;
 @PostMapping("/addtask")
-public String saveSeries(@RequestBody Maintask maintask1)
+public String save(@RequestBody Maintask maintask1)
 {
 	Maintask w= new Maintask();
 	int id=maintask1.getTaskId();
